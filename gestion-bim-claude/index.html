@@ -162,6 +162,29 @@ h2 { font-size: clamp(28px, 4.2vw, 40px); line-height: 1.12; letter-spacing: -.0
 .inscripcion .btn-linea { color: var(--sobre-pink); border-color: rgba(255, 255, 255, .55); }
 .inscripcion .aviso { color: var(--sobre-pink); opacity: .9; }
 
+/* formulario de registro: envía a /reserva-cupo.php (vive en el servidor, fuera de este repo) */
+.reserva-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; max-width: 820px; }
+.campo { display: grid; gap: 6px; min-width: 0; align-content: start; }
+.campo--ancho { grid-column: 1 / -1; }
+.campo label { font-family: var(--mono); text-transform: uppercase; letter-spacing: .14em; font-size: 11px; color: var(--texto2); }
+.campo label span { font-family: var(--display); text-transform: none; letter-spacing: 0; font-size: 12px; color: var(--mudo); margin-left: 6px; }
+.campo input, .campo select, .campo textarea { width: 100%; font: inherit; font-weight: 400; color: var(--texto); background: var(--papel); border: 1px solid var(--linea); border-bottom: 2px solid var(--texto); border-radius: 0; padding: 12px 14px; }
+.campo textarea { resize: vertical; min-height: 88px; }
+.campo input:focus, .campo select:focus, .campo textarea:focus { outline: 2px solid var(--pink); outline-offset: 1px; }
+.campo.es-error input, .campo.es-error select { border-bottom-color: var(--pink); }
+.acepto { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; font-weight: 400; color: var(--texto2); cursor: pointer; }
+.acepto input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--pink); flex: none; }
+.acepto.es-error span { color: var(--pink); }
+.trampa { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.envio { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.envio .btn[disabled] { opacity: .6; cursor: progress; }
+.aviso-form { margin: 0; font-size: 14px; color: var(--texto2); }
+.aviso-form.es-error { color: var(--pink); font-weight: 400; }
+.reserva-ok { max-width: 820px; display: grid; gap: 10px; padding: 26px 28px; background: var(--papel); border: 2px solid var(--texto); }
+.reserva-ok h3 { font-size: 24px; line-height: 1.25; }
+.reserva-ok p { margin: 0; color: var(--texto2); }
+.reserva-form[hidden], .reserva-ok[hidden] { display: none; }
+
 footer { background: var(--bloque); color: var(--bloque-mudo); }
 footer .ancho { padding-block: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
 
@@ -170,7 +193,7 @@ footer .ancho { padding-block: 22px; display: flex; flex-wrap: wrap; justify-con
   .banda .ancho { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
-  .objetivos, .dos, .docentes, .pago, .precio { grid-template-columns: minmax(0, 1fr); }
+  .objetivos, .dos, .docentes, .pago, .precio, .reserva-form { grid-template-columns: minmax(0, 1fr); }
   .precio > div + div { border-left: 0; border-top: 1px solid var(--linea); }
   .sem { grid-template-columns: minmax(0, 1fr); }
   .sem ul { grid-template-columns: minmax(0, 1fr); }
@@ -226,7 +249,7 @@ footer .ancho { padding-block: 22px; display: flex; flex-wrap: wrap; justify-con
     <p>Claude aplicado a la gestión de la información del proyecto: tablas, especificaciones técnicas, control documental, fichas técnicas y formularios. No necesitas saber modelar: el curso trabaja solo sobre la información.</p>
     <div class="mono temas"><span>Tablas</span><span>Especificaciones</span><span>Control documental</span><span>Fichas técnicas</span><span>Formularios</span></div>
     <div class="acciones">
-      <a class="btn btn-pink mono" data-inscripcion href="https://wa.me/56983531795?text=Hola%2C%20quiero%20inscribirme%20en%20el%20curso%20Gesti%C3%B3n%20BIM%20con%20Claude." target="_blank" rel="noopener">Inscríbete por WhatsApp</a>
+      <a class="btn btn-pink mono" href="#reservar">Reserva tu cupo</a>
       <a class="btn btn-linea mono" href="docs/gestion-bim-claude-brochure.pdf" download="Gestion-BIM-con-Claude-Brochure.pdf">Descargar brochure</a>
       <a class="btn btn-linea mono" href="docs/gestion-bim-claude-malla.pdf" download="Gestion-BIM-con-Claude-Malla.pdf">Descargar malla</a>
     </div>
@@ -416,7 +439,7 @@ footer .ancho { padding-block: 22px; display: flex; flex-wrap: wrap; justify-con
         <div class="ini">Inicio: lunes 23 de noviembre de 2026</div>
       </div>
       <div>
-        <p><b>Inscripción directa:</b> escríbenos por WhatsApp y coordinamos contigo el pago por transferencia, Flow o PayPal.</p>
+        <p><b>Inscripción:</b> completa el formulario de registro y te contactamos para confirmar tu cupo y coordinar el pago.</p>
         <p>Al confirmarse el pago te damos la bienvenida, completas tu ficha y recibes tu clave del campus virtual.</p>
       </div>
     </div>
@@ -438,7 +461,7 @@ footer .ancho { padding-block: 22px; display: flex; flex-wrap: wrap; justify-con
       </div>
     </div>
     <div class="acciones">
-      <a class="btn btn-tinta mono" data-inscripcion href="https://wa.me/56983531795?text=Hola%2C%20quiero%20inscribirme%20en%20el%20curso%20Gesti%C3%B3n%20BIM%20con%20Claude." target="_blank" rel="noopener">Inscríbete por WhatsApp</a>
+      <a class="btn btn-tinta mono" href="#reservar">Reserva tu cupo</a>
       <a class="btn btn-linea mono" href="docs/gestion-bim-claude-brochure.pdf" download="Gestion-BIM-con-Claude-Brochure.pdf">Descargar brochure</a>
       <a class="btn btn-linea mono" href="docs/gestion-bim-claude-malla.pdf" download="Gestion-BIM-con-Claude-Malla.pdf">Descargar malla</a>
     </div>
@@ -446,6 +469,70 @@ footer .ancho { padding-block: 22px; display: flex; flex-wrap: wrap; justify-con
       <span>WhatsApp: <span class="sel">+56 9 8353 1795</span></span>
       <span>Correo: <span class="sel">contacto@thebimcowork.cl</span></span>
     </div>
+  </div>
+</section>
+
+<section class="sec gutter" id="reservar">
+  <div class="ancho">
+    <div class="mono cejasec">Formulario de registro</div>
+    <h2>Reserva tu cupo.</h2>
+    <p class="lead">Déjanos tus datos y te reservamos un lugar en la 1ra edición. Te escribimos por correo o WhatsApp para confirmar tu inscripción y coordinar el pago.</p>
+    <form class="reserva-form" id="form-reserva" action="/reserva-cupo.php" method="post" novalidate>
+      <input type="hidden" name="curso" value="gestion-bim-claude">
+      <div class="campo">
+        <label for="r-nombre">Nombre y apellido</label>
+        <input id="r-nombre" name="nombre" type="text" autocomplete="name" required minlength="3" maxlength="120">
+      </div>
+      <div class="campo">
+        <label for="r-correo">Correo</label>
+        <input id="r-correo" name="correo" type="email" autocomplete="email" inputmode="email" required maxlength="160">
+      </div>
+      <div class="campo">
+        <label for="r-whatsapp">WhatsApp con código de país</label>
+        <input id="r-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" placeholder="+56 9 1234 5678" required minlength="8" maxlength="40">
+      </div>
+      <div class="campo">
+        <label for="r-pais">País</label>
+        <input id="r-pais" name="pais" type="text" autocomplete="country-name" list="r-paises" required minlength="2" maxlength="60">
+        <datalist id="r-paises"><option value="Chile"><option value="Argentina"><option value="Perú"><option value="Colombia"><option value="México"><option value="Ecuador"><option value="Bolivia"><option value="Uruguay"><option value="Paraguay"><option value="Venezuela"><option value="España"></datalist>
+      </div>
+      <div class="campo">
+        <label for="r-ocupacion">¿A qué te dedicas? <span>opcional</span></label>
+        <select id="r-ocupacion" name="ocupacion">
+          <option value="">Elige una opción</option>
+          <option>Arquitecto/a</option>
+          <option>Estudiante de arquitectura</option>
+          <option>Constructor/a civil</option>
+          <option>Ingeniero/a</option>
+          <option>Dibujante o proyectista</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="r-descuento">¿Aplicas a un descuento? <span>opcional</span></label>
+        <select id="r-descuento" name="descuento">
+          <option value="">No</option>
+          <option>Estudiante universitario (35 %)</option>
+          <option>Estudiante STAA School (20 %)</option>
+        </select>
+      </div>
+      <div class="campo campo--ancho">
+        <label for="r-comentario">¿Algo que quieras contarnos? <span>opcional</span></label>
+        <textarea id="r-comentario" name="comentario" rows="3" maxlength="600"></textarea>
+      </div>
+      <label class="acepto campo--ancho"><input type="checkbox" name="consentimiento" value="si" required><span>Acepto que The BIM Co-Work me contacte por correo y WhatsApp para coordinar mi inscripción en este curso.</span></label>
+      <div class="trampa" aria-hidden="true"><label for="r-sitio">Sitio web</label><input id="r-sitio" name="sitio_web" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="envio campo--ancho">
+        <button class="btn btn-pink mono" type="submit">Reservar mi cupo</button>
+        <p class="aviso-form" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+    <div class="reserva-ok" id="reserva-ok" tabindex="-1" hidden>
+      <div class="mono cejasec">Cupo reservado</div>
+      <h3>Listo, quedó registrado tu cupo.</h3>
+      <p>Te escribiremos a tu correo o WhatsApp para confirmar la inscripción y coordinar el pago. El curso parte el lunes 23 de noviembre de 2026.</p>
+    </div>
+    <noscript><p class="lead">Para enviar el formulario necesitas activar JavaScript. También puedes escribirnos a contacto@thebimcowork.cl.</p></noscript>
   </div>
 </section>
 
@@ -457,13 +544,59 @@ footer .ancho { padding-block: 22px; display: flex; flex-wrap: wrap; justify-con
 </footer>
 
 <script>
-  /* Clic en «Inscríbete por WhatsApp»: contacto en Meta y evento «inscripcion» en Google. */
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('[data-inscripcion]');
-    if (!a) return;
-    if (window.fbq) fbq('track', 'Contact', {content_name: 'Gestión BIM con Claude'});
-    if (window.gtag) gtag('event', 'inscripcion', {curso: 'gestion-bim-claude', medio: 'whatsapp'});
-  });
+  /* Formulario de registro: envía a /reserva-cupo.php y, si queda guardado, marca
+     «Lead» en Meta y el evento «inscripcion» en Google. */
+  (function () {
+    var form = document.getElementById('form-reserva');
+    if (!form || !window.fetch) return;
+    var aviso = form.querySelector('.aviso-form');
+    var boton = form.querySelector('button[type="submit"]');
+    var ok = document.getElementById('reserva-ok');
+    var marcar = function (campos) {
+      form.querySelectorAll('.es-error').forEach(function (el) { el.classList.remove('es-error'); });
+      (campos || []).forEach(function (n) {
+        var caja = form.elements[n] && form.elements[n].closest('.campo, .acepto');
+        if (caja) caja.classList.add('es-error');
+      });
+    };
+    var error = function (texto, campos) {
+      marcar(campos);
+      aviso.textContent = texto;
+      aviso.className = 'aviso-form es-error';
+      boton.disabled = false;
+    };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var faltan = ['nombre', 'correo', 'whatsapp', 'pais', 'consentimiento'].filter(function (n) {
+        return !form.elements[n].checkValidity();
+      });
+      if (faltan.length) {
+        error('Revisa los campos marcados.', faltan);
+        form.elements[faltan[0]].focus();
+        return;
+      }
+      var datos = new FormData(form);
+      datos.append('pagina', location.href.split('#')[0]);
+      marcar([]);
+      boton.disabled = true;
+      aviso.textContent = 'Enviando…';
+      aviso.className = 'aviso-form';
+      fetch(form.action, { method: 'POST', body: datos, headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+        .then(function (res) {
+          if (!res || !res.ok) {
+            error((res && res.error) || 'No pudimos enviar tu registro. Intenta de nuevo en unos minutos.', res && res.campos);
+            return;
+          }
+          form.hidden = true;
+          ok.hidden = false;
+          ok.focus();
+          if (window.fbq) fbq('track', 'Lead', { content_name: 'Gestión BIM con Claude', value: 150, currency: 'USD' });
+          if (window.gtag) gtag('event', 'inscripcion', { curso: 'gestion-bim-claude', medio: 'formulario' });
+        })
+        .catch(function () { error('No pudimos enviar tu registro. Revisa tu conexión e intenta de nuevo.'); });
+    });
+  })();
 </script>
 </body>
 </html>

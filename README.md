@@ -18,8 +18,19 @@ lleva `index.html` ni `.htaccess`, que pisarían los del sitio si se desplegara 
 
 ## Miniatura en la Academia
 
-Las tarjetas de `/academia/` salen de los cursos del campus (`campus.thebimcowork.cl/a/cursos`),
-no de este repositorio. Cada curso trae su miniatura en `img/miniatura.jpg` (1200 × 618, la
-proporción de las tarjetas de la Academia) para cargarla al crear el curso en el campus:
+Desde el 01-10-2026 `/academia/` no consulta el campus: `academia/index.php` sirve
+`academia/index.html` tal cual, porque ya no lleva las marcas `cursos:tarjetas` y `cursos:paneles`.
+Cada curso se agrega a mano en ese archivo, con una tarjeta y su panel. La miniatura de cada curso
+está en `img/miniatura.jpg` (1200 × 618, la proporción de las tarjetas):
 
 - `gestion-bim-claude/img/miniatura.jpg` → `https://thebimcowork.cl/cursos/gestion-bim-claude/img/miniatura.jpg`
+
+## Formulario de registro
+
+La sección `#reservar` de cada curso envía a `https://thebimcowork.cl/reserva-cupo.php`. Ese
+archivo vive solo en el servidor (`public_html/reserva-cupo.php` y su `reserva-cupo.config.php`),
+fuera de este repositorio. Guarda cada registro en `public_html/_registros/` (sin acceso desde el
+navegador) y avisa por correo a thebimcowork@gmail.com. La planilla de Google Drive «Reservas de
+cupo · Gestión BIM con Claude» lee los registros con `=IMPORTDATA(...)`.
+
+Para un curso nuevo, agrega su carpeta a `RC_CURSOS` en `reserva-cupo.php`.
