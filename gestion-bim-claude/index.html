@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Gestión BIM con Claude · The BIM Co-Work</title>
+  <meta name="description" content="Gestión BIM con Claude · curso de gestión de la información, sin conocimientos de modelación: tablas, especificaciones técnicas, control documental, fichas técnicas y formularios. 5 semanas desde el lunes 23 de noviembre de 2026. USD 150.">
+  <meta name="theme-color" content="#131313">
+  <link rel="canonical" href="https://thebimcowork.cl/cursos/gestion-bim-claude/">
+  <link rel="icon" type="image/png" href="/assets/img/v2/logo-tbc.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The BIM Co-Work">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:title" content="Gestión BIM con Claude · La información del proyecto, sin modelar">
+  <meta property="og:description" content="5 semanas · inicio lunes 23 de noviembre · USD 150 · sin conocimientos de modelación.">
+  <meta property="og:url" content="https://thebimcowork.cl/cursos/gestion-bim-claude/">
+  <meta property="og:image" content="https://thebimcowork.cl/cursos/gestion-bim-claude/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gestión BIM con Claude · La información del proyecto, sin modelar">
+  <meta name="twitter:description" content="5 semanas · inicio lunes 23 de noviembre · USD 150 · sin conocimientos de modelación.">
+  <meta name="twitter:image" content="https://thebimcowork.cl/cursos/gestion-bim-claude/img/og.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap">
+  <style>
+/* Layout: la portada del brochure llevada a la web. Foto arriba, bloque de tinta con el título,
+   banda magenta con inicio y valor; después, secciones con ceja mono y filas de datos. */
+:root {
+  --crema: #f5f1ec;
+  --papel: #efe9e1;
+  --tinta: #131313;
+  --texto: #111111;
+  --texto2: #4a443e;
+  --mudo: #8a837a;
+  --linea: #e2ddd5;
+  --pink: #ed1b69;
+  --sobre-pink: #ffffff;
+  --bloque: #131313;
+  --bloque-texto: #f5f1ec;
+  --bloque-mudo: #a8a29a;
+  --display: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --crema: #151413; --papel: #1f1d1b; --tinta: #0c0c0c; --texto: #f2eee8; --texto2: #c9c3ba;
+    --mudo: #8f887f; --linea: #34302c; --pink: #f0337b; --sobre-pink: #ffffff;
+    --bloque: #0c0c0c; --bloque-texto: #f5f1ec; --bloque-mudo: #a8a29a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --crema: #151413; --papel: #1f1d1b; --tinta: #0c0c0c; --texto: #f2eee8; --texto2: #c9c3ba;
+  --mudo: #8f887f; --linea: #34302c; --pink: #f0337b; --sobre-pink: #ffffff;
+  --bloque: #0c0c0c; --bloque-texto: #f5f1ec; --bloque-mudo: #a8a29a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--crema); color: var(--texto); font-family: var(--display); font-weight: 300; font-size: 16px; line-height: 1.6; }
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.ancho { max-width: 1040px; margin: 0 auto; }
+.mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: .2em; font-size: 11px; font-weight: 400; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+h1, h2, h3 { font-weight: 300; text-wrap: balance; margin: 0; }
+
+/* barra superior */
+.barra { background: var(--bloque); color: var(--bloque-mudo); }
+.barra .ancho { display: flex; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.barra a { color: var(--pink); text-decoration: none; }
+
+/* portada */
+.foto { height: clamp(220px, 42vw, 440px); background: var(--tinta) url(img/portada.jpg) center 55% / cover no-repeat; }
+.bloque { background: var(--bloque); color: var(--bloque-texto); }
+.bloque .ancho { padding-block: 40px 36px; display: grid; gap: 22px; }
+.ceja { display: flex; align-items: center; gap: 14px; color: var(--bloque-mudo); }
+.ceja::before { content: ""; width: 26px; height: 2px; background: var(--pink); flex: none; }
+.bloque h1 { font-size: clamp(34px, 6vw, 60px); line-height: 1.06; letter-spacing: -.02em; color: var(--bloque-texto); }
+.bloque h1 span { display: block; color: var(--bloque-mudo); }
+.bloque p { margin: 0; max-width: 62ch; color: #d6d1c9; font-size: 17px; }
+.temas { display: flex; flex-wrap: wrap; gap: 10px 18px; color: #e8e4dc; }
+.temas span { display: inline-flex; align-items: center; gap: 18px; }
+.temas span + span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--pink); }
+.banda { background: var(--pink); color: var(--sobre-pink); }
+.banda .ancho { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px 28px; padding-block: 22px; }
+.banda .k { opacity: .85; }
+.banda .v { font-weight: 400; font-size: 19px; line-height: 1.3; margin-top: 6px; }
+.acciones { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px; border: 1px solid transparent; text-decoration: none; cursor: pointer; font: inherit; }
+.btn.mono { font-size: 11px; }
+.btn-pink { background: var(--pink); color: var(--sobre-pink); }
+.btn-linea { background: transparent; color: var(--bloque-texto); border-color: #4a453f; }
+.btn-linea:hover { border-color: var(--bloque-texto); }
+.btn-pink:hover { filter: brightness(1.08); }
+.aviso { font-size: 13px; color: var(--bloque-mudo); min-height: 1.4em; }
+
+/* secciones */
+section.sec .ancho { padding-block: 56px; display: grid; gap: 28px; }
+section.sec + section.sec .ancho { border-top: 1px solid var(--linea); }
+.cejasec { display: flex; align-items: center; gap: 14px; color: var(--texto2); }
+.cejasec::before { content: ""; width: 26px; height: 2px; background: var(--pink); flex: none; }
+h2 { font-size: clamp(28px, 4.2vw, 40px); line-height: 1.12; letter-spacing: -.02em; }
+.lead { margin: 0; max-width: 62ch; color: var(--texto2); }
+
+.objetivos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 32px; }
+.obj { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 0 14px; }
+.obj .n { height: 26px; background: var(--pink); color: var(--sobre-pink); display: grid; place-items: center; letter-spacing: .08em; }
+.obj h3 { font-size: 19px; line-height: 1.3; }
+.obj p { margin: 6px 0 0; color: var(--texto2); font-size: 15px; }
+
+.semanas { display: grid; gap: 0; }
+.sem { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 8px 28px; padding-block: 26px; border-top: 1px solid var(--linea); }
+.sem:last-child { border-bottom: 1px solid var(--linea); }
+.sem .cuando { color: var(--pink); padding-top: 6px; }
+.sem h3 { font-size: 22px; line-height: 1.25; }
+.sem .d { margin: 6px 0 0; color: var(--texto2); max-width: 70ch; }
+.sem ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 28px; }
+.sem li { position: relative; padding-left: 18px; font-size: 15px; color: var(--texto); font-weight: 400; line-height: 1.5; }
+.sem li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
+.sem .act { margin: 14px 0 0; color: var(--pink); font-weight: 400; font-size: 15px; }
+
+.dos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.filas { margin: 0; padding: 0; list-style: none; }
+.filas li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding-block: 13px; border-top: 1px solid var(--linea); font-weight: 400; }
+.filas li:last-child { border-bottom: 1px solid var(--linea); }
+.filas .n { color: var(--pink); padding-top: 3px; }
+.vin { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.vin li { position: relative; padding-left: 20px; color: var(--texto2); }
+.vin li::before { content: ""; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; background: var(--pink); }
+
+.docentes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.doc { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 0 20px; align-items: start; }
+.doc img { width: 96px; height: 96px; object-fit: cover; border: 3px solid var(--tinta); padding: 4px; background: #fff; max-width: 100%; }
+.doc .rol { color: var(--pink); }
+.doc h3 { font-size: 22px; font-weight: 400; margin-top: 4px; }
+.doc .cred { margin: 10px 0 0; font-size: 14px; font-weight: 400; line-height: 1.55; }
+.doc .bio { margin: 10px 0 0; font-size: 14px; color: var(--texto2); }
+
+/* inscripción */
+.inscripcion { background: var(--pink); color: var(--sobre-pink); }
+.inscripcion .ancho { padding-block: 56px; display: grid; gap: 28px; }
+.inscripcion h2 { color: var(--sobre-pink); }
+.precio { background: var(--crema); color: var(--texto); border: 2px solid var(--tinta); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.precio > div { padding: 26px 28px; min-width: 0; }
+.precio > div + div { border-left: 1px solid var(--linea); color: var(--texto2); }
+.precio .monto { font-size: 44px; letter-spacing: -.02em; line-height: 1.1; margin-top: 10px; }
+.precio .sub { font-weight: 400; font-size: 19px; margin-top: 4px; }
+.precio .ini { color: var(--pink); font-weight: 400; font-size: 14px; margin-top: 10px; }
+.precio p { margin: 0 0 12px; }
+.precio b { font-weight: 500; color: var(--texto); }
+.pago { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.pago .cejasec { color: var(--sobre-pink); }
+.pago .cejasec::before { background: var(--sobre-pink); }
+.pago ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.dto { display: grid; gap: 6px; margin-top: 14px; }
+.dto div { display: flex; align-items: baseline; gap: 12px; }
+.dto b { font-weight: 400; font-size: 22px; min-width: 56px; white-space: nowrap; }
+.contacto { display: grid; gap: 4px; font-weight: 400; }
+.contacto .sel { user-select: all; }
+.btn-tinta { background: var(--tinta); color: #fff; }
+.btn-tinta:hover { filter: brightness(1.3); }
+.inscripcion .btn-linea { color: var(--sobre-pink); border-color: rgba(255, 255, 255, .55); }
+.inscripcion .aviso { color: var(--sobre-pink); opacity: .9; }
+
+footer { background: var(--bloque); color: var(--bloque-mudo); }
+footer .ancho { padding-block: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+
+@media (max-width: 860px) {
+  .objetivos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .banda .ancho { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .objetivos, .dos, .docentes, .pago, .precio { grid-template-columns: minmax(0, 1fr); }
+  .precio > div + div { border-left: 0; border-top: 1px solid var(--linea); }
+  .sem { grid-template-columns: minmax(0, 1fr); }
+  .sem ul { grid-template-columns: minmax(0, 1fr); }
+  .doc { grid-template-columns: 76px minmax(0, 1fr); }
+  .doc img { width: 76px; height: 76px; }
+  section.sec .ancho, .inscripcion .ancho { padding-block: 40px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: filter .15s ease, border-color .15s ease; }
+}
+</style>
+  <!-- Google Ads · misma cuenta que las demás páginas del sitio -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18493193627"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18493193627');
+  </script>
+  <!-- Meta Pixel · The BIM Co-Work -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1694656171686458');
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent', {content_name: 'Gestión BIM con Claude', content_ids: ['gestion-bim-claude'], content_type: 'product', value: 150, currency: 'USD'});
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=1694656171686458&ev=PageView&noscript=1"></noscript>
+  <!-- Metricool -->
+  <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"ea3760835fa3d9fc1827de0b25f95c29"})});</script>
+</head>
+<body>
+<header class="barra gutter">
+  <div class="ancho">
+    <span class="mono">The BIM Co-Work · Método TBC</span>
+    <a class="mono" href="/">thebimcowork.cl</a>
+  </div>
+</header>
+
+<div class="foto" role="img" aria-label="Calle de la ciudad con luces en movimiento"></div>
+
+<section class="bloque gutter">
+  <div class="ancho">
+    <div class="mono ceja">Método TBC · Nuevo curso · 1ra edición</div>
+    <h1>Gestión BIM con Claude.<span>La información del proyecto, sin modelar.</span></h1>
+    <p>Claude aplicado a la gestión de la información del proyecto: tablas, especificaciones técnicas, control documental, fichas técnicas y formularios. No necesitas saber modelar: el curso trabaja solo sobre la información.</p>
+    <div class="mono temas"><span>Tablas</span><span>Especificaciones</span><span>Control documental</span><span>Fichas técnicas</span><span>Formularios</span></div>
+    <div class="acciones">
+      <a class="btn btn-pink mono" data-inscripcion href="https://wa.me/56983531795?text=Hola%2C%20quiero%20inscribirme%20en%20el%20curso%20Gesti%C3%B3n%20BIM%20con%20Claude." target="_blank" rel="noopener">Inscríbete por WhatsApp</a>
+      <a class="btn btn-linea mono" href="docs/gestion-bim-claude-brochure.pdf" download="Gestion-BIM-con-Claude-Brochure.pdf">Descargar brochure</a>
+      <a class="btn btn-linea mono" href="docs/gestion-bim-claude-malla.pdf" download="Gestion-BIM-con-Claude-Malla.pdf">Descargar malla</a>
+    </div>
+  </div>
+</section>
+
+<section class="banda gutter" aria-label="Datos del curso">
+  <div class="ancho">
+    <div><div class="mono k">Inicio</div><div class="v">Lunes 23 de noviembre de 2026</div></div>
+    <div><div class="mono k">Duración</div><div class="v">5 semanas</div></div>
+    <div><div class="mono k">Requisito</div><div class="v">Sin conocimientos de modelación</div></div>
+    <div><div class="mono k">Valor</div><div class="v">USD 150</div></div>
+  </div>
+</section>
+
+<section class="sec gutter" id="objetivos">
+  <div class="ancho">
+    <div class="mono cejasec">Objetivos de aprendizaje</div>
+    <h2>Seis objetivos.</h2>
+    <div class="objetivos">
+      <div class="obj"><div class="mono n">01</div><div><h3>Tablas.</h3><p>Crear tablas de información del proyecto (superficies, cantidades y listados) y verificarlas antes de entregarlas.</p></div></div>
+      <div class="obj"><div class="mono n">02</div><div><h3>Especificaciones técnicas.</h3><p>Redactar especificaciones técnicas desde los antecedentes del proyecto y cruzarlas con planos y planillas.</p></div></div>
+      <div class="obj"><div class="mono n">03</div><div><h3>Control documental.</h3><p>Ordenar el listado de planos, la nomenclatura, las revisiones y el registro de entregas.</p></div></div>
+      <div class="obj"><div class="mono n">04</div><div><h3>Fichas técnicas.</h3><p>Producir fichas técnicas de materiales y productos con un formato común y la información verificada.</p></div></div>
+      <div class="obj"><div class="mono n">05</div><div><h3>Formularios.</h3><p>Preparar y completar los formularios del proyecto a partir de la información existente, sin volver a digitarla.</p></div></div>
+      <div class="obj"><div class="mono n">06</div><div><h3>Detalles y gestiones.</h3><p>Resolver con Claude los detalles y las gestiones generales que aparecen en el día a día de un proyecto.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec gutter" id="malla">
+  <div class="ancho">
+    <div class="mono cejasec">Malla del curso</div>
+    <h2>Cinco semanas. Seis temas.</h2>
+    <p class="lead">Una semana por tema, sobre documentos reales de proyecto. Cada semana trae su contenido en el campus, una actividad práctica y un entregable que corrigen los profesores.</p>
+    <div class="semanas">
+      <article class="sem">
+        <div class="mono cuando">Semana 1</div>
+        <div>
+          <h3>Creación de tablas</h3>
+          <p class="d">Claude como herramienta de gestión de la información: cómo pedir, revisar y corregir. Las tablas del proyecto se arman desde los antecedentes y se verifican antes de entregarse.</p>
+          <ul>
+            <li>Claude Desktop para gestión: proyectos, archivos de referencia e instrucciones fijas.</li>
+            <li>Anatomía de una instrucción: rol, contexto, tarea, formato y restricción.</li>
+            <li>Cuadros de superficies, cantidades y listados a partir de planos, planillas y PDF.</li>
+            <li>Exportación a Excel con fórmulas visibles, sin valores pegados a mano.</li>
+            <li>Verificación contra la fuente: unidades, totales y lo que queda sin información.</li>
+            <li>La IA no firma: el criterio y la responsabilidad siguen siendo del profesional.</li>
+          </ul>
+          <p class="act">Actividad práctica: tabla de superficies de un proyecto real, verificada contra los planos.</p>
+        </div>
+      </article>
+      <article class="sem">
+        <div class="mono cuando">Semana 2</div>
+        <div>
+          <h3>Especificaciones técnicas</h3>
+          <p class="d">La especificación técnica redactada desde los antecedentes del proyecto y cruzada con planos y planillas: la contradicción aparece en el escritorio y no en obra.</p>
+          <ul>
+            <li>Estructura de una especificación por partidas.</li>
+            <li>Redacción desde planos, planilla de terminaciones y fichas de fabricantes.</li>
+            <li>Cruce entre especificación, planos y planillas para detectar contradicciones.</li>
+            <li>Normativa citada con su fuente; lo que no tiene respaldo queda marcado.</li>
+            <li>Control de versiones del documento.</li>
+          </ul>
+          <p class="act">Actividad práctica: especificación de tres partidas, cruzada con la planilla de terminaciones.</p>
+        </div>
+      </article>
+      <article class="sem">
+        <div class="mono cuando">Semana 3</div>
+        <div>
+          <h3>Control documental</h3>
+          <p class="d">El expediente ordenado y trazable: qué documento existe, en qué versión está y a quién se entregó.</p>
+          <ul>
+            <li>Listado maestro de planos y documentos.</li>
+            <li>Nomenclatura de archivos y láminas, con ISO 19650 como referencia.</li>
+            <li>Revisiones, estados y registro de entregas.</li>
+            <li>Lectura de un expediente en PDF para poblar el listado.</li>
+            <li>Detección de faltantes, duplicados y versiones desfasadas.</li>
+          </ul>
+          <p class="act">Actividad práctica: listado maestro de un expediente real, armado desde sus PDF.</p>
+        </div>
+      </article>
+      <article class="sem">
+        <div class="mono cuando">Semana 4</div>
+        <div>
+          <h3>Fichas técnicas y formularios</h3>
+          <p class="d">Fichas de materiales y productos con un formato común, y formularios del proyecto completados desde la información que ya existe.</p>
+          <ul>
+            <li>Ficha técnica tipo: campos, unidades y fuente de cada dato.</li>
+            <li>Extracción de datos desde catálogos y fichas de fabricantes.</li>
+            <li>Formularios del proyecto completados desde los antecedentes, sin volver a digitar.</li>
+            <li>Revisión cruzada: ficha, especificación y planilla dicen lo mismo.</li>
+          </ul>
+          <p class="act">Actividad práctica: fichas de cinco materiales y un formulario del proyecto completo.</p>
+        </div>
+      </article>
+      <article class="sem">
+        <div class="mono cuando">Semana 5</div>
+        <div>
+          <h3>Detalles y gestiones en general</h3>
+          <p class="d">Las gestiones de todos los días resueltas con Claude, y la entrega final del curso revisada en vivo.</p>
+          <ul>
+            <li>Minutas, respuestas técnicas y seguimiento de observaciones.</li>
+            <li>Revisión de documentos antes de emitirlos.</li>
+            <li>Plantillas e instrucciones propias para repetir el flujo.</li>
+            <li>Del encargo al documento entregado: el flujo completo.</li>
+          </ul>
+          <p class="act">Actividad práctica: tres gestiones reales de tu oficina resueltas con Claude, y la entrega final integrada.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec gutter" id="metodologia">
+  <div class="ancho">
+    <div class="mono cejasec">Metodología y evaluación</div>
+    <h2>Se avanza cuando el trabajo se aprueba.</h2>
+    <p class="lead">El Método TBC avanza por aprobación de entregable: se progresa cuando el trabajo se aprueba, no cuando transcurre el tiempo.</p>
+    <ul class="filas">
+      <li><span class="mono n">01</span><span>Cada semana incluye una actividad práctica sobre documentos reales, evaluada por el docente.</span></li>
+      <li><span class="mono n">02</span><span>Rúbrica de diez criterios por actividad, en escala 1 · 4 · 5 · 7.</span></li>
+      <li><span class="mono n">03</span><span>Los entregables los corrigen los profesores: se aprueba con nota 4,0 y retroalimentación escrita.</span></li>
+      <li><span class="mono n">04</span><span>Las entregas pueden corregirse y volver a presentarse.</span></li>
+      <li><span class="mono n">05</span><span>Clases en vivo para revisar tu avance y resolver dudas; todas quedan grabadas.</span></li>
+    </ul>
+    <div class="dos">
+      <div>
+        <div class="mono cejasec">Requisitos de ingreso</div>
+        <ul class="vin">
+          <li>No se necesitan conocimientos de modelación</li>
+          <li>Claude Desktop</li>
+          <li>Excel</li>
+          <li>Computador con conexión estable para las clases en vivo</li>
+        </ul>
+      </div>
+      <div>
+        <div class="mono cejasec">El curso incluye</div>
+        <ul class="vin">
+          <li>Clases en vivo vía Zoom, grabadas</li>
+          <li>Acceso al campus virtual</li>
+          <li>Material descargable y plantillas de trabajo</li>
+          <li>Entregables corregidos por los profesores</li>
+          <li>Acceso permanente a la comunidad The BIM Co-Work en Skool</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec gutter" id="docentes">
+  <div class="ancho">
+    <div class="mono cejasec">Equipo docente</div>
+    <h2>Dos docentes.</h2>
+    <div class="docentes">
+      <div class="doc">
+        <img src="img/rafael.jpg" alt="Rafael Terrero" width="96" height="96">
+        <div>
+          <div class="mono rol">Docente y jefe del programa</div>
+          <h3>Rafael Terrero</h3>
+          <p class="cred">Arquitecto U. de Oriente (2013) · U. de Chile (2021, revalidado)<br>Magíster BIM Management · UNIACC (2025)<br>Diplomado BIM Avanzado · PUC (2019)</p>
+          <p class="bio">Más de diez años de experiencia en modelación BIM, coordinación técnica y desarrollo de proyectos de arquitectura, en inmobiliaria, retail e infraestructura pública en Chile. Responsable de la modelación BIM de la Red Hospitalaria del Biobío.</p>
+        </div>
+      </div>
+      <div class="doc">
+        <img src="img/rodrigo.jpg" alt="Rodrigo Fritis" width="96" height="96">
+        <div>
+          <div class="mono rol">Docente</div>
+          <h3>Rodrigo Fritis</h3>
+          <p class="cred">Arquitecto Universidad de La Serena, Chile<br>Certificación Revit Profesional · Autodesk<br>+15 años · infraestructura, movilidad y patrimonio</p>
+          <p class="bio">Diplomados en BIM (iBIM Chile), Gestión del Patrimonio Local (U. Finis Terrae) y Docencia Superior Técnico Profesional (AIEP). Docente en AIEP y fundador del Estudio A24 Arquitectos Consultores.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="inscripcion gutter" id="inscripcion">
+  <div class="ancho">
+    <div class="mono cejasec" style="color:var(--sobre-pink)">Inscripciones abiertas</div>
+    <h2>Inscríbete en la 1ra edición.</h2>
+    <div class="precio">
+      <div>
+        <div class="mono" style="color:var(--mudo)">Valor del curso</div>
+        <div class="monto">USD 150</div>
+        <div class="sub">Curso completo · 5 semanas</div>
+        <div class="ini">Inicio: lunes 23 de noviembre de 2026</div>
+      </div>
+      <div>
+        <p><b>Inscripción directa:</b> escríbenos por WhatsApp y coordinamos contigo el pago por transferencia, Flow o PayPal.</p>
+        <p>Al confirmarse el pago te damos la bienvenida, completas tu ficha y recibes tu clave del campus virtual.</p>
+      </div>
+    </div>
+    <div class="pago">
+      <div>
+        <div class="mono cejasec">Formas de pago</div>
+        <ul>
+          <li>Transferencia bancaria.</li>
+          <li>Flow: pago con tarjeta de crédito, para estudiantes en Chile.</li>
+          <li>PayPal: estudiantes internacionales.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="mono cejasec">Descuentos</div>
+        <div class="dto">
+          <div><b>35 %</b><span>Estudiantes universitarios</span></div>
+          <div><b>20 %</b><span>Estudiantes STAA School</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="acciones">
+      <a class="btn btn-tinta mono" data-inscripcion href="https://wa.me/56983531795?text=Hola%2C%20quiero%20inscribirme%20en%20el%20curso%20Gesti%C3%B3n%20BIM%20con%20Claude." target="_blank" rel="noopener">Inscríbete por WhatsApp</a>
+      <a class="btn btn-linea mono" href="docs/gestion-bim-claude-brochure.pdf" download="Gestion-BIM-con-Claude-Brochure.pdf">Descargar brochure</a>
+      <a class="btn btn-linea mono" href="docs/gestion-bim-claude-malla.pdf" download="Gestion-BIM-con-Claude-Malla.pdf">Descargar malla</a>
+    </div>
+    <div class="contacto">
+      <span>WhatsApp: <span class="sel">+56 9 8353 1795</span></span>
+      <span>Correo: <span class="sel">contacto@thebimcowork.cl</span></span>
+    </div>
+  </div>
+</section>
+
+<footer class="gutter">
+  <div class="ancho">
+    <span class="mono">The BIM Co-Work · Santiago de Chile</span>
+    <span class="mono">thebimcowork.cl · campus.thebimcowork.cl</span>
+  </div>
+</footer>
+
+<script>
+  /* Clic en «Inscríbete por WhatsApp»: contacto en Meta y evento «inscripcion» en Google. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-inscripcion]');
+    if (!a) return;
+    if (window.fbq) fbq('track', 'Contact', {content_name: 'Gestión BIM con Claude'});
+    if (window.gtag) gtag('event', 'inscripcion', {curso: 'gestion-bim-claude', medio: 'whatsapp'});
+  });
+</script>
+</body>
+</html>
