@@ -12,7 +12,9 @@ y queda publicado en `https://thebimcowork.cl/cursos/<carpeta>/`.
 Hostinger despliega este repositorio en `public_html/cursos` (hPanel → Avanzado → Git).
 Cada cambio que entra a `main` se publica con el despliegue automático de Hostinger.
 
-`index.html` en la raíz solo redirige a `/academia/`, para que `/cursos/` no muestre el listado de archivos.
+El directorio de despliegue tiene que ser `public_html/cursos`, nunca `public_html`: Hostinger
+reemplaza los archivos del directorio en cada despliegue. Por eso la raíz de este repositorio no
+lleva `index.html` ni `.htaccess`, que pisarían los del sitio si se desplegara en la raíz por error.
 
 ## Miniatura en la Academia
 
